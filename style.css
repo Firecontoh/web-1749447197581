@@ -1,0 +1,478 @@
+:root {
+    --primary-green: #28a745;
+    --dark-green: #1a7e32;
+    --light-green: #e9f7ea;
+    --text-color: #333;
+    --bg-dark: #2c3e50; /* Dark blue-gray for background */
+    --card-bg: #ffffff;
+    --input-border: #ccc;
+    --input-focus: var(--primary-green);
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --error-red: #dc3545;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #1a2a3a 100%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Hide overflow from background animation */
+    position: relative;
+}
+
+/* Background Animation */
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-animation span {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(40, 167, 69, 0.1); /* Slightly transparent green */
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+}
+
+.background-animation span:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+.background-animation span:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.background-animation span:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.background-animation span:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.background-animation span:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.background-animation span:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.background-animation span:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.background-animation span:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.background-animation span:nth-child(9) {
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.background-animation span:nth-child(10) {
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 11s;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+
+/* Login Wrapper & Container */
+.login-wrapper {
+    position: relative;
+    z-index: 1;
+    perspective: 1000px; /* For 3D transformations */
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    animation: fadeInScaleUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+}
+
+@keyframes fadeInScaleUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.login-header {
+    margin-bottom: 2rem;
+}
+
+.login-header h1 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    display: inline-block;
+    animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 5px var(--primary-green), 0 0 10px var(--primary-green);
+    }
+    to {
+        text-shadow: 0 0 10px var(--primary-green), 0 0 20px var(--primary-green);
+    }
+}
+
+/* Input Group Styling */
+.input-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem 0.5rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    outline: none;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-green);
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    transform: translateY(-1.5rem) scale(0.8);
+    color: var(--primary-green);
+}
+
+.input-group label {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.input-group .input-underline {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-green);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.input-group input:focus + label + .input-underline {
+    width: 100%;
+}
+
+.password-group {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.password-group.visible {
+    height: auto; /* Adjust based on content */
+    opacity: 1;
+    transform: translateY(0);
+    margin-bottom: 2rem;
+}
+
+
+/* Toggle Switch Styling */
+.toggle-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 0.8rem;
+}
+
+.toggle-checkbox {
+    display: none;
+}
+
+.toggle-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease;
+}
+
+.toggle-inner::before,
+.toggle-inner::after {
+    float: left;
+    width: 50%;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.toggle-inner::before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: var(--primary-green);
+    color: white;
+    text-align: left;
+}
+
+.toggle-inner::after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: right;
+}
+
+.toggle-switch {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 3px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-inner {
+    margin-left: 0;
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-switch {
+    right: 3px;
+    background-color: #fff;
+}
+
+.toggle-group span {
+    color: #fff;
+    font-weight: 400;
+    font-size: 0.95rem;
+}
+
+/* Login Button */
+.login-button {
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--dark-green) 100%);
+    color: white;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.3s ease, transform 0.2s ease-out;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    width: 100%;
+}
+
+.login-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.6);
+}
+
+.login-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(40, 167, 69, 0.3);
+}
+
+.login-button .button-text {
+    position: relative;
+    z-index: 2;
+}
+
+.login-button .button-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: ripple-effect 0.6s linear forwards;
+    transform: scale(0);
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Help Message */
+.help-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    visibility: hidden; /* Hide element from screen readers when not visible */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.help-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.help-message .error-text {
+    color: var(--error-red);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.help-message .highlight {
+    color: var(--light-green);
+    font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 500px) {
+    .login-container {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .login-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .input-group label {
+        font-size: 0.9rem;
+        top: 0.7rem;
+    }
+
+    .input-group input {
+        font-size: 0.95rem;
+        padding: 0.7rem 0.5rem;
+    }
+
+    .login-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .toggle-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Wifi MTsN 1 Lamongan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="login-wrapper">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Login Wifi MTsN 1 Lamongan</h1>
+            </div>
+            <div class="login-card">
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="text" id="username" required autocomplete="off">
+                        <label for="username">Username Siswa / NIP Guru/Staff</label>
+                        <div class="input-underline"></div>
+                    </div>
+                    <div class="input-group password-group hidden">
+                        <input type="password" id="password" autocomplete="off">
+                        <label for="password">Password</label>
+                        <div class="input-underline"></div>
+                    </div>
+
+                    <div class="toggle-group">
+                        <input type="checkbox" id="isStaff" class="toggle-checkbox">
+                        <label for="isStaff" class="toggle-label">
+                            <span class="toggle-inner"></span>
+                            <span class="toggle-switch"></span>
+                        </label>
+                        <span>Guru/Staff</span>
+                    </div>
+
+                    <button type="submit" id="loginBtn" class="login-button">
+                        <span class="button-text">Login</span>
+                        <div class="button-ripple"></div>
+                    </button>
+                </form>
+
+                <div id="helpMessage" class="help-message">
+                    <p class="error-text">Terjadi Kesalahan Login!</p>
+                    <p>Jika error, <span class="highlight">Hubungi Staff IT Kami</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
